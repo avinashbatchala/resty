@@ -1,6 +1,7 @@
 package com.nash.resty.service;
 
 import com.nash.resty.entity.Department;
+import com.nash.resty.exception.DepartmentNotFoundException;
 import com.nash.resty.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,14 @@ public class DepartmentServiceImpl implements DepartmentService{
     }
 
     @Override
-    public Optional<Department> findDepartmentById(Long id) {
-        return departmentRepository.findById(id);
+    public Optional<Department> findDepartmentById(Long id) throws DepartmentNotFoundException {
+        Optional<Department> department =  departmentRepository.findById(id);
+
+        if(department.isEmpty()) {
+            throw new DepartmentNotFoundException("Department Not Found");
+        }
+
+        return department;
     }
 
     @Override

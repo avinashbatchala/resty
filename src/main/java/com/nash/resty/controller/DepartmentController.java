@@ -1,6 +1,7 @@
 package com.nash.resty.controller;
 
 import com.nash.resty.entity.Department;
+import com.nash.resty.exception.DepartmentNotFoundException;
 import com.nash.resty.service.DepartmentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/departments/{id}")
-    public Optional<Department> findDepartmentById(@PathVariable("id") Long id) {
+    public Optional<Department> findDepartmentById(@PathVariable("id") Long id) throws DepartmentNotFoundException {
         return departmentService.findDepartmentById(id);
     }
 
