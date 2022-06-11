@@ -2,20 +2,24 @@ package com.nash.resty.controller;
 
 import com.nash.resty.entity.Department;
 import com.nash.resty.service.DepartmentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@Slf4j
 public class DepartmentController {
 
     @Autowired
     private DepartmentService departmentService;
 
     @PostMapping("/add-department")
-    public Department saveDepartment(@RequestBody Department department) {
+    public Department saveDepartment(@Valid @RequestBody Department department) {
+        log.info("Department Saved", department.toString());
         return departmentService.saveDepartment(department);
     }
 
