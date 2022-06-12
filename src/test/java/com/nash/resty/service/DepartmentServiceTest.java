@@ -3,7 +3,6 @@ package com.nash.resty.service;
 import com.nash.resty.entity.Department;
 import com.nash.resty.exception.DepartmentNotFoundException;
 import com.nash.resty.repository.DepartmentRepository;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -13,7 +12,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class DepartmentServiceTest {
